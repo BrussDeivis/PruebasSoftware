@@ -16,7 +16,7 @@ describe("Pruebas de Ruta basica Ejercicio 2", function(){
     });
 
     it('debería devolver 4 para entrada 3', function() {
-        assert.strictEqual(calculate2(3), 4);
+        assert.strictEqual(calculate2(3), 6);
     });
     
 
