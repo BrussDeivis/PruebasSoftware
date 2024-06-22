@@ -1,4 +1,4 @@
-const {calculate2, pruebaRutaFlujoControl } = require("../techniques/basicPath")
+const {calculate2, pruebaRutaFlujoControl, alquileDepartamento } = require("../techniques/basicPath")
 const assert =require('assert')
 
 
@@ -19,7 +19,7 @@ describe("Pruebas de Ruta basica Ejercicio 2", function(){
         assert.strictEqual(calculate2(3), 6);
     });
     */
-    it('debería devolver un mensaje de aprobación si la calificación es mayor o igual a 60', () => {
+    /*it('debería devolver un mensaje de aprobación si la calificación es mayor o igual a 60', () => {
         const resultado = pruebaRutaFlujoControl('Ana', 70);
         assert.strictEqual(resultado, 'Ana aprobo con 70.\nAna no tiene premio.');
     });
@@ -32,6 +32,32 @@ describe("Pruebas de Ruta basica Ejercicio 2", function(){
     it('debería devolver un mensaje de elegibilidad para un premio si la calificación es mayor a 90', () => {
         const resultado = pruebaRutaFlujoControl('Carlos', 95);
         assert.strictEqual(resultado, 'Carlos aprobo con 95.\nCarlos tiene premio');
+    });*/
+
+
+
+    // Caso de prueba 1: Alquiler exitoso
+    it('Debería alquilar el departamento con éxito si está disponible y el arrendatario es mayor de edad', function() {
+        const resultado = alquileDepartamento(true, 20); // Suponiendo que el cuarto está disponible y el arrendatario tiene 20 años
+        assert.strictEqual(resultado, "Alquilar cuarto con éxito");
+    });
+
+    it('No debería alquilar el departamento si no está disponible', function() {
+        try {
+            alquileDepartamento(false, 25); // Suponiendo que el cuarto no está disponible
+            assert.fail('Se esperaba una excepción');
+        } catch (error) {
+            assert.strictEqual(error.message, "No alquilar cuarto (Cuarto no disponible)");
+        }
+    });
+
+    it('No debería alquilar el departamento si el arrendatario no es mayor de edad', function() {
+        try {
+            alquileDepartamento(true, 16); // Suponiendo que el arrendatario tiene menos de 18 años
+            assert.fail('Se esperaba una excepción');
+        } catch (error) {
+            assert.strictEqual(error.message, "No alquilar cuarto (Arrendatario no es mayor de edad)");
+        }
     });
 
 

@@ -1,5 +1,5 @@
 module.exports={
-    /*calculate2: function(n) {
+    calculate2: function(n) {
         let contador = n;
         if (contador < 3) {
             console.log("Primera condición - if: contador es menor que 3");
@@ -15,8 +15,8 @@ module.exports={
             contador++;
         } while (contador < 3);
         return contador;
-    }
-*/
+    },
+
 
 
 
@@ -37,7 +37,26 @@ module.exports={
     }
 
     return `${mensajeAprobacion}\n${mensajeElegibilidad}`;
-}
+    },
+
+    alquileDepartamento: function(disponible, edadArrendatario) {
+        // Verificar si el cuarto está disponible
+        if (!disponible) {
+            throw new Error("No alquilar cuarto (Cuarto no disponible)");
+        }
+
+        // Verificar si el arrendatario es mayor de edad (18 años en este ejemplo)
+        if (edadArrendatario < 18) {
+            throw new Error("No alquilar cuarto (Arrendatario no es mayor de edad)");
+        }
+
+        // Alquilar el cuarto
+        disponible = false; // Marcar el cuarto como no disponible
+        edadArrendatario = edadArrendatario;
+        return "Alquilar cuarto con éxito";
+        },
+
+    
 
 // Llamar a la función pruebaRutaFlujoControl con diferentes datos de estudiantes
 
